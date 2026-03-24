@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface MovieRepository extends CrudRepository<Book, Long> {
+public interface MovieRepository extends CrudRepository<Movie, Long> {
     /**Jos halutaan automaatti joka hakee esim nimellä kirjan
      * List<Book> findByTitle (String title);
      */

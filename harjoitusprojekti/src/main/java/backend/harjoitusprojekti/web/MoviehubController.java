@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import backend.harjoitusprojekti.model.Movie;
+import backend.harjoitusprojekti.model.MovieRepository;
+
 
 @Controller
 public class MoviehubController {
@@ -16,7 +19,7 @@ public class MoviehubController {
 
     @RequestMapping("/moviehub")
     public String moviehub(Model model) {
-        model.addAttribute("movies", movierepository.findAll())
+        model.addAttribute("movies", movierepository.findAll());
         return "moviehub";
     }
     
