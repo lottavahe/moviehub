@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Serie {
@@ -13,24 +15,25 @@ public class Serie {
     private String title;
     private String creator;
     private int releaseYear;
-    private String genre;
     private int seasons;
     private int episodes;
     private int duration;
+    
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 
-    public Serie() {
+    public Serie() { }
 
-    }
-
-    public Serie(String title, String creator, int releaseYear, String genre, int seasons, int episodes, int duration) {
+    public Serie(String title, String creator, int releaseYear, int seasons, int episodes, int duration, Genre genre) {
         super();
         this.title = title;
         this.creator = creator;
         this.releaseYear = releaseYear;
-        this.genre = genre;
         this.seasons = seasons;
         this.episodes = episodes;
         this.duration = duration;
+        this.genre = genre;
     }
 
     public Long getId() {
@@ -65,14 +68,6 @@ public class Serie {
         this.releaseYear = releaseYear;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public int getSeasons() {
         return seasons;
     }
@@ -95,6 +90,14 @@ public class Serie {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     @Override

@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Movie {
@@ -16,20 +18,21 @@ public class Movie {
     private String title;
     private String director;
     private int releaseYear;
-    private String genre;
     private int duration;
 
-    public Movie() {
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 
-    }
+    public Movie() { }
 
-    public Movie(String title, String director, int releaseYear, String genre, int duration) {
+    public Movie(String title, String director, int releaseYear, int duration, Genre genre) {
         super();
         this.title = title;
         this.director = director;
         this.releaseYear = releaseYear;
-        this.genre = genre;
         this.duration = duration;
+        this.genre = genre;
     }
 
     public Long getId() {
@@ -64,14 +67,6 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
     public int getDuration() {
         return duration;
     }
@@ -79,11 +74,17 @@ public class Movie {
     public void setDuration(int duration) {
         this.duration = duration;
     }
+    
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 
     @Override
     public String toString() {
         return "";
     }
-    
-
 }
