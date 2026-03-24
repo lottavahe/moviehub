@@ -6,6 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 public interface SerieRepository extends CrudRepository<Serie, Long> {
    
     List<Serie> findByTitle(String title);
-    List<Serie> findByGenre(String genre);
+
+    List<Serie> findByGenre_GenreId(Long genreId);
+    List<Serie> findByInWatchlistTrueAndWatchedFalse();
+    List<Serie> findByWatchedTrue();
 
 }

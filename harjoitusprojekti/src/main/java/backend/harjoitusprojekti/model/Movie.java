@@ -1,8 +1,4 @@
 package backend.harjoitusprojekti.model;
-
-import java.sql.Date;
-
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +16,9 @@ public class Movie {
     private int releaseYear;
     private int duration;
 
+    private boolean inWatchlist;
+    private boolean watched;
+
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
@@ -33,6 +32,8 @@ public class Movie {
         this.releaseYear = releaseYear;
         this.duration = duration;
         this.genre = genre;
+        this.inWatchlist = false;
+        this.watched = false;
     }
 
     public Long getId() {
@@ -81,6 +82,21 @@ public class Movie {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+    public boolean isInWatchlist() {
+        return inWatchlist;
+    }
+
+    public void setInWatchlist(boolean inWatchlist) {
+        this.inWatchlist = inWatchlist;
+    }
+
+    public boolean isWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 
     @Override

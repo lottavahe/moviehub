@@ -18,6 +18,9 @@ public class Serie {
     private int seasons;
     private int episodes;
     private int duration;
+
+    private boolean inWatchlist;
+    private boolean watched;
     
     @ManyToOne
     @JoinColumn(name = "genre_id")
@@ -34,6 +37,8 @@ public class Serie {
         this.episodes = episodes;
         this.duration = duration;
         this.genre = genre;
+        this.inWatchlist = false;
+        this.watched = false;
     }
 
     public Long getId() {
@@ -98,6 +103,21 @@ public class Serie {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+    public boolean isInWatchlist() {
+        return inWatchlist;
+    }
+
+    public void setInWatchlist(boolean inWatchlist) {
+        this.inWatchlist = inWatchlist;
+    }
+
+    public boolean isWatched() {
+        return watched;
+    }
+
+    public void setWatched(boolean watched) {
+        this.watched = watched;
     }
 
     @Override

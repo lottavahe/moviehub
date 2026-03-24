@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Series</title>
+</head>
+<body>
+    <h1>Series</h1>
+    <p>All series in MovieHub</p>
+
+    <ul>
+        <li><a th:href="@{/moviehub}">Home</a></li>
+        <li><a th:href="@{/movies}">Movies</a></li>
+        <li><a th:href="@{/series}">Series</a></li>
+        <li><a th:href="@{/watchlist}">Watchlist</a></li>
+        <li><a th:href="@{/watched}">Watched</a></li>
+    </ul>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Creator</th>
+            <th>Release Year</th>
+            <th>Seasons</th>
+            <th>Episodes</th>
+            <th>Episode Duration</th>
+            <th>Genre</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="serie : ${series}">
+            <td th:text="${serie.title}"></td>
+            <td th:text="${serie.creator}"></td>
+            <td th:text="${serie.releaseYear}"></td>
+            <td th:text="${serie.seasons}"></td>
+            <td th:text="${serie.episodes}"></td>
+            <td th:text="${serie.episodeDuration}"></td>
+            <td th:text="${serie.genre.genreName}"></td>
+            <td>
+                <a th:href="@{/addserietowatchlist/{id}(id=${serie.id})}">Add to watchlist</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
