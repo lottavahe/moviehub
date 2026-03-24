@@ -15,11 +15,15 @@ import backend.harjoitusprojekti.model.MovieRepository;
 
 @Controller
 public class MoviehubController {
-    private MovieRepository movierepository;
+    private MovieRepository movieRepository;
+
+    public MoviehubController(MovieRepository mrepository) {
+        this.movieRepository = mrepository;
+    }
 
     @RequestMapping("/moviehub")
-    public String moviehub(Model model) {
-        model.addAttribute("movies", movierepository.findAll());
+    public String movieList(Model model) {
+        model.addAttribute("movies", movieRepository.findAll());
         return "moviehub";
     }
     
