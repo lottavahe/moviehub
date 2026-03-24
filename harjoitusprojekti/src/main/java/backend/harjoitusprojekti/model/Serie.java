@@ -1,34 +1,35 @@
 package backend.harjoitusprojekti.model;
 
-import java.sql.Date;
-
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Movie {
+public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title;
-    private String director;
+    private String creator;
     private int releaseYear;
     private String genre;
+    private int seasons;
+    private int episodes;
     private int duration;
 
-    public Movie() {
+    public Serie() {
 
     }
 
-    public Movie(String title, String director, int releaseYear, String genre, int duration) {
+    public Serie(String title, String creator, int releaseYear, String genre, int seasons, int episodes, int duration) {
         super();
         this.title = title;
-        this.director = director;
+        this.creator = creator;
         this.releaseYear = releaseYear;
         this.genre = genre;
+        this.seasons = seasons;
+        this.episodes = episodes;
         this.duration = duration;
     }
 
@@ -48,12 +49,12 @@ public class Movie {
         this.title = title;
     }
 
-    public String getDirector() {
-        return director;
+    public String getCreator() {
+        return creator;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public int getReleaseYear() {
@@ -72,6 +73,22 @@ public class Movie {
         this.genre = genre;
     }
 
+    public int getSeasons() {
+        return seasons;
+    }
+
+    public void setSeasons(int seasons) {
+        this.seasons = seasons;
+    }
+
+    public int getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(int episodes) {
+        this.episodes = episodes;
+    }
+
     public int getDuration() {
         return duration;
     }
@@ -85,5 +102,5 @@ public class Movie {
         return "";
     }
     
-
+    
 }

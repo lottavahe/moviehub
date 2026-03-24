@@ -11,14 +11,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import backend.harjoitusprojekti.model.Movie;
 import backend.harjoitusprojekti.model.MovieRepository;
+import backend.harjoitusprojekti.model.Serie;
+import backend.harjoitusprojekti.model.SerieRepository;
+
 
 
 @Controller
 public class MoviehubController {
     private MovieRepository movieRepository;
+    private SerieRepository serieRepository;
 
-    public MoviehubController(MovieRepository mrepository) {
+    public MoviehubController(
+        MovieRepository mrepository,
+        SerieRepository srepository 
+    ) {
         this.movieRepository = mrepository;
+        this.serieRepository = srepository;
     }
 
     @RequestMapping("/moviehub")
