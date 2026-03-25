@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Watchlist</title>
+</head>
+<body>
+    <h1>Watchlist</h1>
+    <p>Movies and series you want to watch later</p>
+
+    <ul>
+        <li><a th:href="@{/moviehub}">Home</a></li>
+        <li><a th:href="@{/movies}">Movies</a></li>
+        <li><a th:href="@{/series}">Series</a></li>
+        <li><a th:href="@{/watchlist}">Watchlist</a></li>
+        <li><a th:href="@{/watched}">Watched</a></li>
+    </ul>
+
+    <h2>Movies</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Release Year</th>
+            <th>Duration</th>
+            <th>Genre</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="movie : ${watchlistMovies}">
+            <td th:text="${movie.title}"></td>
+            <td th:text="${movie.director}"></td>
+            <td th:text="${movie.releaseYear}"></td>
+            <td th:text="${movie.duration}"></td>
+            <td th:text="${movie.genre.genreName}"></td>
+            <td>
+                <a th:href="@{/markmoviewatched/{id}(id=${movie.movieId})}">Mark as watched</a>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Series</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Creator</th>
+            <th>Release Year</th>
+            <th>Seasons</th>
+            <th>Episodes</th>
+            <th>Episode Duration</th>
+            <th>Genre</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="serie : ${watchlistSeries}">
+            <td th:text="${serie.title}"></td>
+            <td th:text="${serie.creator}"></td>
+            <td th:text="${serie.releaseYear}"></td>
+            <td th:text="${serie.seasons}"></td>
+            <td th:text="${serie.episodes}"></td>
+            <td th:text="${serie.episodeDuration}"></td>
+            <td th:text="${serie.genre.genreName}"></td>
+            <td>
+                <a th:href="@{/markseriewatched/{id}(id=${serie.id})}">Mark as watched</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
