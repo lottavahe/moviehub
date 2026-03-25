@@ -2,6 +2,7 @@ package backend.harjoitusprojekti.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -70,6 +71,20 @@ public class SearchController {
         model.addAttribute("genres", genreRepository.findAll());
         model.addAttribute("keyword", keyword);
 
+        return "series";
+    }
+    //hae genren mukaan elokuva
+    @RequestMapping("/movies/genre/{id}")
+    public String showMoviesByGenre(@PathVariable Long id, Model model) {
+        model.addAttribute("movies", movieRepository.findByGenre_GenreId(id));
+        model.addAttribute("genres", genreRepository.findAll());
+        return "movies";
+    }
+    //hae genren mukaa sarja
+    @RequestMapping("/series/genre/{id}")
+    public String showSeriesByGenre(@PathVariable Long id, Model model) {
+        model.addAttribute("series", serieRepository.findByGenre_GenreId(id));
+        model.addAttribute("genres", genreRepository.findAll());
         return "series";
     }
 
