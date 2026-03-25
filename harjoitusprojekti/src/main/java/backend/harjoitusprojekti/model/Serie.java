@@ -1,5 +1,7 @@
 package backend.harjoitusprojekti.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +23,8 @@ public class Serie {
 
     private boolean inWatchlist;
     private boolean watched;
+
+    @JsonIgnoreProperties("series")
     
     @ManyToOne
     @JoinColumn(name = "genre_id")

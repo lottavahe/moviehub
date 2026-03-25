@@ -1,4 +1,6 @@
 package backend.harjoitusprojekti.model;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,8 @@ public class Movie {
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
+
+    @JsonIgnoreProperties("movies")
 
     public Movie() { }
 
