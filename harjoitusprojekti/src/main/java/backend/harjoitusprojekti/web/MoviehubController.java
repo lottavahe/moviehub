@@ -14,9 +14,6 @@ import backend.harjoitusprojekti.model.GenreRepository;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-
-
-
 @Controller
 public class MoviehubController {
     private MovieRepository movieRepository;
@@ -92,6 +89,7 @@ public class MoviehubController {
 
         if (movie != null) {
             movie.setWatched(true);
+            movie.setInWatchlist(false);
             movieRepository.save(movie);
         }
 
@@ -104,6 +102,7 @@ public class MoviehubController {
 
         if (serie != null) {
             serie.setWatched(true);
+            serie.setInWatchlist(false);
             serieRepository.save(serie);
         }
 
@@ -149,6 +148,5 @@ public class MoviehubController {
         model.addAttribute("genres", genreRepository.findAll());
         return "series";
     }
-
 
 }
