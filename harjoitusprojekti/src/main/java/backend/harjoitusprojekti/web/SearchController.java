@@ -43,7 +43,7 @@ public class SearchController {
 
         results.addAll(movieRepository.findByTitleContainingIgnoreCase(keyword));
         results.addAll(movieRepository.findByDirectorContainingIgnoreCase(keyword));
-        results.addAll(movieRepository.findByGenreNameContainingIgnoreCase(keyword));
+        results.addAll(movieRepository.findByGenre_GenreNameContainingIgnoreCase(keyword));
 
         model.addAttribute("movies", results);
         model.addAttribute("genres", genreRepository.findAll());
@@ -63,8 +63,8 @@ public class SearchController {
         Set<Serie> results = new LinkedHashSet<>();
 
         results.addAll(serieRepository.findByTitleContainingIgnoreCase(keyword));
-        results.addAll(serieRepository.findByDirectorContainingIgnoreCase(keyword));
-        results.addAll(serieRepository.findByGenreNameContainingIgnoreCase(keyword));
+        results.addAll(serieRepository.findByCreatorContainingIgnoreCase(keyword));
+        results.addAll(serieRepository.findByGenre_GenreNameContainingIgnoreCase(keyword));
 
         model.addAttribute("series", results);
         model.addAttribute("genres", genreRepository.findAll());

@@ -8,8 +8,8 @@ public interface SerieRepository extends CrudRepository<Serie, Long> {
     List<Serie> findByTitle(String title);
     List<Serie> findByGenre_GenreId(Long genreId);
     List<Serie> findByTitleContainingIgnoreCase(String keyword);
-    List<Serie> findByDirectorContainingIgnoreCase(String keyword);
-    List<Serie> findByGenreNameContainingIgnoreCase(String keyword);
+    List<Serie> findByCreatorContainingIgnoreCase(String keyword);
+    List<Serie> findByGenre_GenreNameContainingIgnoreCase(String keyword);
     //watchlistiä ja watchedia varten haut
     List<Serie> findByInWatchlistTrueAndWatchedFalse();
     List<Serie> findByWatchedTrue();
