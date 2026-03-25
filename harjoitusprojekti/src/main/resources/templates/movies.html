@@ -15,6 +15,10 @@
         <li><a th:href="@{/watchlist}">Watchlist</a></li>
         <li><a th:href="@{/watched}">Watched</a></li>
     </ul>
+    <form th:action="@{/movies/search}" method="get">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by title, director or genre">
+        <button type="submit">Search</button>
+    </form>
 
     <table>
         <tr>

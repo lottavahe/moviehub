@@ -3,6 +3,7 @@ package backend.harjoitusprojekti.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import backend.harjoitusprojekti.model.GenreRepository;
 import backend.harjoitusprojekti.model.Movie;
@@ -27,9 +28,11 @@ public class SearchController {
         this.serieRepository = srepository;
         this.genreRepository = grepository;
     }
+    
+    
 //elokuvien haku
-    @RequestMapping("movies/search")
-    public String searchMovies(String keyword, Model model) {
+    @RequestMapping("/movies/search")
+    public String searchMovies(@RequestParam() String keyword, Model model) {
         if (keyword == null || keyword.trim().isEmpty()) {
             model.addAttribute("movies", movieRepository.findByInWatchlistFalseAndWatchedFalse());
             model.addAttribute("genres", genreRepository.findAll());
@@ -50,7 +53,7 @@ public class SearchController {
     }
     //sarjojen haku
     @RequestMapping("/series/search")
-    public String searchSeries(String keyword, Model model) {
+    public String searchSeries(@RequestParam()String keyword, Model model) {
         if (keyword == null || keyword.trim().isEmpty()) {
             model.addAttribute("series", serieRepository.findByInWatchlistFalseAndWatchedFalse());
             model.addAttribute("genres", genreRepository.findAll());

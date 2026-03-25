@@ -28,7 +28,10 @@
             <th>Add to watchlist</th>
             <th>Add to watched</th>
         </tr>
-
+        <form th:action="@{/series/search}" method="get">
+            <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by title, creator or genre">
+            <button type="submit">Search</button>
+        </form>
         <tr th:each="serie : ${series}">
             <td th:text="${serie.title}"></td>
             <td th:text="${serie.creator}"></td>
