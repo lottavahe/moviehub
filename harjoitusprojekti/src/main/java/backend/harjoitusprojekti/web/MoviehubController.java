@@ -36,14 +36,14 @@ public class MoviehubController {
 //näyttäää kaikki elokuvat
     @RequestMapping("/movies")
     public String showAllMovies(Model model) {
-        model.addAttribute("movies", movieRepository.findAll());
+        model.addAttribute("movies", movieRepository.findByInWatchlistFalseAndWatchedFalse());
         model.addAttribute("genres", genreRepository.findAll());
         return "movies";
     }
 //näyttäää kaikki sarjat
     @RequestMapping("/series")
     public String showAllSeries(Model model) {
-        model.addAttribute("series", serieRepository.findAll());
+        model.addAttribute("series", serieRepository.findByInWatchlistFalseAndWatchedFalse());
         model.addAttribute("genres", genreRepository.findAll());
         return "series";
     }
@@ -95,7 +95,7 @@ public class MoviehubController {
             movieRepository.save(movie);
         }
 
-        return "redirect:/watchlist";
+        return "redirect:/watched";
     }
     // merkitse sarja katsotuksi
     @RequestMapping(value = "/markseriewatched/{id}", method = RequestMethod.GET)
@@ -107,7 +107,7 @@ public class MoviehubController {
             serieRepository.save(serie);
         }
 
-        return "redirect:/watchlist";
+        return "redirect:/watched";
     }
     //palauta elokuva watchlistiin
     @RequestMapping(value = "/returnmovietowatchlist/{id}", method = RequestMethod.GET)
@@ -120,7 +120,7 @@ public class MoviehubController {
             movieRepository.save(movie);
         }
 
-        return "redirect:/watched";
+        return "redirect:/watchlist";
     }
     //palauta sarja watchlistiin
     @RequestMapping(value = "/returnserietowatchlist/{id}", method = RequestMethod.GET)
@@ -133,7 +133,7 @@ public class MoviehubController {
             serieRepository.save(serie);
         }
 
-        return "redirect:/watched";
+        return "redirect:/watchlist";
     }
     //hae genren mukaan elokuva
     @RequestMapping("/movies/genre/{id}")

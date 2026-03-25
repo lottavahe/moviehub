@@ -39,7 +39,7 @@
             <td th:text="${serie.genre.genreName}"></td>
             <td>
                 <a th:href="@{/addserietowatchlist/{id}(id=${serie.id})}">Add to watchlist</a>
-                <a th:href="@{/markmoviewatched/{id}(id=${movie.id})}">Mark as watched</a>
+                <a th:href="@{/markseriewatched/{id}(id=${serie.id})}">Mark as watched</a>
             </td>
         </tr>
     </table>

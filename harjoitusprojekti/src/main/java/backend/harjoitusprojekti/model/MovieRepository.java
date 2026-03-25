@@ -10,6 +10,8 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
 
     List<Movie> findByGenre_GenreId(Long genreId);
     List<Movie> findByInWatchlistTrueAndWatchedFalse();
+
     List<Movie> findByWatchedTrue();
+    List<Movie> findByInWatchlistFalseAndWatchedFalse();
 
 }

@@ -9,6 +9,9 @@ public interface SerieRepository extends CrudRepository<Serie, Long> {
 
     List<Serie> findByGenre_GenreId(Long genreId);
     List<Serie> findByInWatchlistTrueAndWatchedFalse();
+
     List<Serie> findByWatchedTrue();
+    List<Serie> findByInWatchlistFalseAndWatchedFalse();
+
 
 }

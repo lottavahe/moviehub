@@ -24,7 +24,7 @@
             <th>Release Year</th>
             <th>Duration</th>
             <th>Genre</th>
-            <th>Action</th>
+            <th>Mark as watched</th>
         </tr>
 
         <tr th:each="movie : ${watchlistMovies}">
@@ -34,7 +34,7 @@
             <td th:text="${movie.duration}"></td>
             <td th:text="${movie.genre.genreName}"></td>
             <td>
-                <a th:href="@{/markmoviewatched/{id}(id=${movie.movieId})}">Mark as watched</a>
+                <a th:href="@{/markmoviewatched/{id}(id=${movie.id})}">Mark as watched</a>
             </td>
         </tr>
     </table>
@@ -49,7 +49,7 @@
             <th>Episodes</th>
             <th>Duration</th>
             <th>Genre</th>
-            <th>Action</th>
+            <th>Mark as watched</th>
         </tr>
 
         <tr th:each="serie : ${watchlistSeries}">
