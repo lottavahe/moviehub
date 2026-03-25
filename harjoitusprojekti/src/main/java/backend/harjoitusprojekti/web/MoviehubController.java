@@ -10,10 +10,9 @@ import backend.harjoitusprojekti.model.Movie;
 import backend.harjoitusprojekti.model.MovieRepository;
 import backend.harjoitusprojekti.model.Serie;
 import backend.harjoitusprojekti.model.SerieRepository;
-import backend.harjoitusprojekti.model.Genre;
 import backend.harjoitusprojekti.model.GenreRepository;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
