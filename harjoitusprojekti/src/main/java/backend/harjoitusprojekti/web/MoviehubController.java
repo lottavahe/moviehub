@@ -64,7 +64,7 @@ public class MoviehubController {
     }
     //poistaa elokuvan (myöh lisää oikeus vain adminille)
     @RequestMapping(value = "/deletemovie/{id}", method = RequestMethod.GET)
-    public String deleteBook(@PathVariable Long id, Model model) {
+    public String deleteMovie(@PathVariable Long id, Model model) {
         movieRepository.deleteById(id);
         return "redirect:/movies";
     }
@@ -80,11 +80,11 @@ public class MoviehubController {
     @RequestMapping(value = "/deleteserie/{id}", method = RequestMethod.GET)
     public String deleteSerie(@PathVariable Long id, Model model) {
         serieRepository.deleteById(id);
-        return "redirect:series";
+        return "redirect:/series";
     }
     //lisää sarjjan (myöh lisää oikeus admin)
     @RequestMapping(value = "/addserie")
-    public String addBook(Model model) {
+    public String addSerie(Model model) {
         model.addAttribute("serie", new Serie());
         model.addAttribute("genres", genreRepository.findAll());
         return "addserie";

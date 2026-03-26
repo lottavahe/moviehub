@@ -27,7 +27,7 @@
         <input type="number" id="duration" th:field="*{duration}" />
 
         <label for="genre">Genre</label>
-        <select id="genre" name="genreId">
+        <select id="genre" th:field="*{genre.genreId}">
             <option th:each="genre : ${genres}"
                     th:value="${genre.genreId}"
                     th:text="${genre.genreName}">
