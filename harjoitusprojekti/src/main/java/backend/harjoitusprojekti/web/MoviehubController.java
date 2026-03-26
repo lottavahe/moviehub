@@ -26,6 +26,11 @@ public class MoviehubController {
         this.serieRepository = srepository;
         this.genreRepository = grepository;
     }
+    //login pakollinen
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }
 //näytttäää movie hubin aloitussivun loginin jälkee
     @RequestMapping("/moviehub")
     public String showMoviehub() {
