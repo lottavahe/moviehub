@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import backend.harjoitusprojekti.model.AppUser;
+import backend.harjoitusprojekti.model.AppUserRepository;
 import backend.harjoitusprojekti.model.Genre;
 import backend.harjoitusprojekti.model.GenreRepository;
 import backend.harjoitusprojekti.model.Movie;
@@ -21,12 +23,14 @@ public class HarjoitusprojektiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HarjoitusprojektiApplication.class, args);
 	}
+
 	/** lisäsin tetsidataa tekoälyn avulla, chatgpt 5.4 */
 	@Bean
 	public CommandLineRunner moviedemo(
 			MovieRepository mrepository,
 			SerieRepository srepository,
-			GenreRepository grepository) {
+			GenreRepository grepository,
+			AppUserRepository urepository) {
 		return (args) -> {
 
 			log.info("lisäsin genret");
@@ -44,11 +48,14 @@ public class HarjoitusprojektiApplication {
 			log.info("lisäsin elokuvia");
 
 			mrepository.save(new Movie("The Shawshank Redemption", "Frank Darabont", 1994, 142, drama));
-			mrepository.save(new Movie("The Lord of the Rings: The Fellowship of the Ring", "Peter Jackson", 2001, 178, fantasy));
-			mrepository.save(new Movie("The Lord of the Rings: The Return of the King", "Peter Jackson", 2003, 201, fantasy));
+			mrepository.save(new Movie("The Lord of the Rings: The Fellowship of the Ring", "Peter Jackson", 2001, 178,
+					fantasy));
+			mrepository.save(
+					new Movie("The Lord of the Rings: The Return of the King", "Peter Jackson", 2003, 201, fantasy));
 			mrepository.save(new Movie("Star Wars: Episode IV - A New Hope", "George Lucas", 1977, 121, scifi));
 			mrepository.save(new Movie("Jurassic Park", "Steven Spielberg", 1993, 127, adventure));
-			mrepository.save(new Movie("Harry Potter and the Philosopher's Stone", "Chris Columbus", 2001, 152, fantasy));
+			mrepository
+					.save(new Movie("Harry Potter and the Philosopher's Stone", "Chris Columbus", 2001, 152, fantasy));
 			mrepository.save(new Movie("The Lion King", "Roger Allers", 1994, 88, animation));
 			mrepository.save(new Movie("Avengers: Endgame", "Anthony Russo", 2019, 181, action));
 			mrepository.save(new Movie("Spider-Man: No Way Home", "Jon Watts", 2021, 148, action));
@@ -81,6 +88,12 @@ public class HarjoitusprojektiApplication {
 			srepository.save(new Serie("House of the Dragon", "George R. R. Martin", 2022, 1, 10, 60, fantasy));
 			srepository.save(new Serie("Sherlock", "Mark Gatiss & Steven Moffat", 2010, 4, 13, 90, crime));
 			srepository.save(new Serie("Black Mirror", "Charlie Brooker", 2011, 6, 27, 60, scifi));
+
+			// Create users: admin/admin user/user
+			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER", "user@gmail.com");
+			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN", "admin@gmail.com");
+			urepository.save(user1);
+			urepository.save(user2);
 
 		};
 	}
