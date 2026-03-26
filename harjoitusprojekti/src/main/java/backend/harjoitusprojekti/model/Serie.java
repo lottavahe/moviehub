@@ -8,17 +8,39 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.AssertTrue;
+
+//validatiioon
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.persistence.Transient;
+import java.time.Year;
+
 
 @Entity
 public class Serie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank(message = "Title is required")
     private String title;
+
+    @NotBlank(message = "Creator is required")
     private String creator;
+
+    @Min(value = 1800, message = "release year must be atleast 1800")
     private int releaseYear;
+
+    @Min(value = 1, message = "there must be atleast 1 season")
     private int seasons;
+
+    @Min(value = 1, message = "there must be atleast 1 episode")
     private int episodes;
+
+    @Min(value = 1, message = "duration must be atleast 1 min")
     private int duration;
 
     private boolean inWatchlist;
@@ -26,9 +48,18 @@ public class Serie {
 
     @JsonIgnoreProperties("series")
     
+    @NotNull(message = "genre is required")
     @ManyToOne
     @JoinColumn(name = "genre_id")
     private Genre genre;
+
+    //tämä tarkistaa onko vuosi nykyinen vuosi, 
+    // en halua että voi julkaista tulevaisuuteen
+    @AssertTrue(message = "Release year cannot be greater than the current year")
+    @Transient
+    public boolean isReleaseYearValid() {
+        return releaseYear <= Year.now().getValue();
+    }
 
     public Serie() { }
 

@@ -2,6 +2,7 @@ package backend.harjoitusprojekti.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import backend.harjoitusprojekti.model.MovieRepository;
 import backend.harjoitusprojekti.model.Serie;
 import backend.harjoitusprojekti.model.SerieRepository;
+import jakarta.validation.Valid;
 import backend.harjoitusprojekti.model.GenreRepository;
 import backend.harjoitusprojekti.model.Movie;
 
@@ -35,14 +37,12 @@ public class MoviehubController {
     @RequestMapping("/movies")
     public String showAllMovies(Model model) {
         model.addAttribute("movies", movieRepository.findByInWatchlistFalseAndWatchedFalse());
-        model.addAttribute("genres", genreRepository.findAll());
         return "movies";
     }
 //näyttäää kaikki sarjat
     @RequestMapping("/series")
     public String showAllSeries(Model model) {
         model.addAttribute("series", serieRepository.findByInWatchlistFalseAndWatchedFalse());
-        model.addAttribute("genres", genreRepository.findAll());
         return "series";
     }
 //näyttää elokuvat jotka haluat katsoa 
@@ -64,7 +64,7 @@ public class MoviehubController {
     }
     //poistaa elokuvan (myöh lisää oikeus vain adminille)
     @RequestMapping(value = "/deletemovie/{id}", method = RequestMethod.GET)
-    public String deleteMovie(@PathVariable Long id, Model model) {
+    public String deleteMovie(@PathVariable Long id) {
         movieRepository.deleteById(id);
         return "redirect:/movies";
     }
@@ -78,7 +78,7 @@ public class MoviehubController {
     }
     //poistaa sarjan (myöh lisää oikeus vain adminille)
     @RequestMapping(value = "/deleteserie/{id}", method = RequestMethod.GET)
-    public String deleteSerie(@PathVariable Long id, Model model) {
+    public String deleteSerie(@PathVariable Long id) {
         serieRepository.deleteById(id);
         return "redirect:/series";
     }
@@ -90,17 +90,23 @@ public class MoviehubController {
         return "addserie";
     }
 
-
-
     //tallennna elokuva
     @RequestMapping(value = "/savemovie", method = RequestMethod.POST)
-    public String savemovie(Movie movie) {
+    public String savemovie(@Valid Movie movie, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute("genres", genreRepository.findAll());
+            return "addmovie";
+        }
         movieRepository.save(movie);
         return "redirect:/movies";
     }
-    //tallenna sarja
+    //tallenna sarja 
     @RequestMapping(value = "/saveserie", method = RequestMethod.POST)
-    public String saveserie(Serie serie) {
+    public String saveserie(@Valid Serie serie, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute("genres", genreRepository.findAll());
+            return "addserie";
+        }
         serieRepository.save(serie);
         return "redirect:/series";
     }

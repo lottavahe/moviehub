@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import backend.harjoitusprojekti.model.GenreRepository;
 import backend.harjoitusprojekti.model.Movie;
 import backend.harjoitusprojekti.model.MovieRepository;
 import backend.harjoitusprojekti.model.Serie;
@@ -14,12 +13,10 @@ import backend.harjoitusprojekti.model.SerieRepository;
 public class ActionController {
     private MovieRepository movieRepository;
     private SerieRepository serieRepository;
-    private GenreRepository genreRepository;
-
-    public ActionController(MovieRepository mrepository, SerieRepository srepository, GenreRepository grepository) {
+    
+    public ActionController(MovieRepository mrepository, SerieRepository srepository) {
         this.movieRepository = mrepository;
         this.serieRepository = srepository;
-        this.genreRepository = grepository;
     }
     //lisää elokuvan watchlistin
     @RequestMapping("/addmovietowatchlist/{id}")
