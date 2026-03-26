@@ -36,6 +36,7 @@
             <th>Genre</th>
             <th>Add to watchlist</th>
             <th>Add to watched</th>
+            <th>Delete</th>
         </tr>
 
         <tr th:each="serie : ${series}">
@@ -51,6 +52,10 @@
             </td>
             <td>
                 <a th:href="@{/markseriewatched/{id}(id=${serie.id})}">Mark as watched</a>
+            </td>
+            <td>
+                <a th:href="@{/deleteserie/{id}(id=${serie.id})}"
+                onclick="return confirm('Delete this series?')">Delete</a>
             </td>
         </tr>
     </table>

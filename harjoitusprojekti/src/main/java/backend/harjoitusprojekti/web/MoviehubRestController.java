@@ -1,5 +1,7 @@
 package backend.harjoitusprojekti.web;
 
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,21 +34,30 @@ public class MoviehubRestController {
     public Iterable<Movie> getAllMovies() {
         return movieRepository.findAll();
     }
+    @GetMapping("/movies/{id}")
+    public Optional<Movie> findByMovieId(@PathVariable("id") Long movieId) {
+        return movieRepository.findById(movieId);
+    }
 
-    @PostMapping("movies")
+    @PostMapping("/movies")
     public Movie addMovie(@RequestBody Movie movie) {
         return movieRepository.save(movie);
     }
 
     @DeleteMapping("/movies/{id}")
-    public void deleteMovie(@PathVariable Long id) {
+    public Iterable<Movie> deleteMovie(@PathVariable Long id) {
         movieRepository.deleteById(id);
+        return movieRepository.findAll();
     }
 
     //sarjojen api polutt
     @GetMapping("/series")
     public Iterable<Serie> getAllSeries() {
         return serieRepository.findAll();
+    }
+    @GetMapping("/series/{id}")
+    public Optional<Serie> findBySerieId(@PathVariable("id") Long serieId) {
+        return serieRepository.findById(serieId);
     }
 
     @PostMapping("/series")
@@ -55,8 +66,9 @@ public class MoviehubRestController {
     }
 
     @DeleteMapping("/series/{id}")
-    public void deleteSerie(@PathVariable Long id) {
+    public Iterable<Serie> deleteSerie(@PathVariable Long id) {
         serieRepository.deleteById(id);
+        return serieRepository.findAll();
     }
     //genrelle yksi getmapping 
     @GetMapping("/genres")

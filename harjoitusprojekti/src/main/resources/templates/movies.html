@@ -32,6 +32,7 @@
             <th>Genre</th>
             <th>Add to watchlist</th>
             <th>Add to watched</th>
+            <th>Delete</th>
         </tr>
 
         <tr th:each="movie : ${movies}">
@@ -45,6 +46,10 @@
             </td>
             <td>
                 <a th:href="@{/markmoviewatched/{id}(id=${movie.id})}">Mark as watched</a>
+            </td>
+            <td>
+                <a th:href="@{/deletemovie/{id}(id=${movie.id})}"
+                onclick="return confirm('Delete this movie?')">Delete</a>
             </td>
         </tr>
     </table>
