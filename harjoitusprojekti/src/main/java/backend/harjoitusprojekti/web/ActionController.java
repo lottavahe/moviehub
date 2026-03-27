@@ -69,30 +69,30 @@ public class ActionController {
         return "redirect:/watched";
     }
     //palauta elokuva watchlistiin
-    @RequestMapping(value = "/returnmovietowatchlist/{id}")
-    public String returnMovieToWatchlist(@PathVariable Long id) {
+    @RequestMapping(value = "/returnmovietomovies/{id}")
+    public String returnMovieToMovies(@PathVariable Long id) {
         Movie movie = movieRepository.findById(id).orElse(null);
 
         if (movie != null) {
-            movie.setInWatchlist(true);
+            movie.setInWatchlist(false);
             movie.setWatched(false);
             movieRepository.save(movie);
         }
 
-        return "redirect:/watchlist";
+        return "redirect:/movies";
     }
     //palauta sarja watchlistiin
-    @RequestMapping(value = "/returnserietowatchlist/{id}")
-    public String returnSerieToWatchlist(@PathVariable Long id) {
+    @RequestMapping(value = "/returnserietoseries/{id}")
+    public String returnSerieToSeries(@PathVariable Long id) {
         Serie serie = serieRepository.findById(id).orElse(null);
 
         if (serie != null) {
-            serie.setInWatchlist(true);
+            serie.setInWatchlist(false);
             serie.setWatched(false);
             serieRepository.save(serie);
         }
 
-        return "redirect:/watchlist";
+        return "redirect:/series";
     }
 
 }

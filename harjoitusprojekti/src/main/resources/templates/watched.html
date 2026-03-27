@@ -25,7 +25,7 @@
             <th>Release Year</th>
             <th>Duration</th>
             <th>Genre</th>
-            <th>Return movie back to watchlist</th>
+            <th>Return movie back to movies</th>
         
         </tr>
 
@@ -36,7 +36,7 @@
             <td th:text="${movie.duration}"></td>
             <td th:text="${movie.genre.genreName}"></td>
             <td>
-                <a th:href="@{/returnmovietowatchlist/{id}(id=${movie.id})}">Return movie to watchlist</a>
+                <a th:href="@{/returnmovietomovies/{id}(id=${movie.id})}">Delete movie from watched</a>
             </td>
         </tr>
     </table>
@@ -51,7 +51,7 @@
             <th>Episodes</th>
             <th>Episode Duration</th>
             <th>Genre</th>
-            <th>Return serie back to watchlist</th>
+            <th>Return serie back to series</th>
         </tr>
 
         <tr th:each="serie : ${watchedSeries}">
@@ -63,8 +63,7 @@
             <td th:text="${serie.duration}"></td>
             <td th:text="${serie.genre.genreName}"></td>
             <td>
-                <a th:href="@{/returnserietowatchlist/{id}(id=${serie.id})}">Return serie to watchlist
-                </a>
+                <a th:href="@{/returnserietoseries/{id}(id=${serie.id})}">Delete serie from watched</a>
             </td>
         </tr>
     </table>

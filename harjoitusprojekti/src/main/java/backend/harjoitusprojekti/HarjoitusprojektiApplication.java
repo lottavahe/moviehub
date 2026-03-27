@@ -24,7 +24,7 @@ public class HarjoitusprojektiApplication {
 		SpringApplication.run(HarjoitusprojektiApplication.class, args);
 	}
 
-	/** lisäsin tetsidataa tekoälyn avulla, chatgpt 5.4 */
+	/** lisäsin testidataa tekoälyn avulla, chatgpt 5.4 */
 	@Bean
 	public CommandLineRunner moviedemo(
 			MovieRepository mrepository,
