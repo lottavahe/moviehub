@@ -11,14 +11,9 @@
     <div class="col-md-4 col-md-offset-4">
         <h2>Create account</h2>
 
-        <li>
-            <p>Allready have an account?</p>
-        <li><a th:href="@{/login}">Login here</a></li>
-        </li>
-
         <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
 
-        <form th:action="@{/saveuser}" th:object="${appUser}" method="post">
+        <form th:action="@{/register}" th:object="${registerForm}" method="post">
             <div class="form-group">
                 <label>Username</label>
                 <input type="text" th:field="*{username}" class="form-control" required />
@@ -31,7 +26,11 @@
 
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" th:field="*{passwordHash}" class="form-control" required />
+                <input type="password" th:field="*{password}" class="form-control" required />
+            </div>
+            <div class="form-group">
+                <label>Confirm password</label>
+                <input type="password" th:field="*{confirmPassword}" class="form-control" required />
             </div>
 
             <div style="margin-top: 10px;">
@@ -40,6 +39,8 @@
             </div>
         </form>
     </div>
+    <p>Allready have an account?</p>
+    <li><a th:href="@{/login}">Login here</a></li>
 </body>
 
 </html>
