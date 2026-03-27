@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <title>Watched</title>
 </head>
+
 <body>
     <h1>Watched</h1>
     <p>Movies and series you have already watched</p>
@@ -26,7 +28,7 @@
             <th>Duration</th>
             <th>Genre</th>
             <th>Return movie back to movies</th>
-        
+
         </tr>
 
         <tr th:each="movie : ${watchedMovies}">
@@ -68,4 +70,5 @@
         </tr>
     </table>
 </body>
+
 </html>

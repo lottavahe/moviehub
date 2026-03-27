@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <meta charset="UTF-8">
     <title>Movies</title>
 </head>
+
 <body>
     <h1>Movies</h1>
     <p>All movies in MovieHub</p>
@@ -50,9 +52,10 @@
             </td>
             <td>
                 <a th:href="@{/deletemovie/{id}(id=${movie.id})}"
-                onclick="return confirm('Delete this movie?')">Delete</a>
+                    onclick="return confirm('Delete this movie?')">Delete</a>
             </td>
         </tr>
     </table>
 </body>
+
 </html>

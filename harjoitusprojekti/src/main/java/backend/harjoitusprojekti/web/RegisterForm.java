@@ -6,7 +6,9 @@ import jakarta.validation.constraints.Size;
 
 //käytin apuna tätä nettisivua https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
 //aikamoinen himmeli
-
+//eli tätä registerformia ei tallenneta tietokantaan
+//käyttäjä täyttää registerformin, service tekee tästä 
+//oikean appuser olion joka tallennetaan vasta tietokantaan
 public class RegisterForm {
     @NotBlank(message = "Username is required")
     private String username;

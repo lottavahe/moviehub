@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <title>Moviehub Register</title>
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
 </head>
+
 <body>
     <div class="col-md-4 col-md-offset-4">
         <h2>Create account</h2>
 
         <li>
             <p>Allready have an account?</p>
-            <li><a th:href="@{/login}">Login here</a></li>
+        <li><a th:href="@{/login}">Login here</a></li>
         </li>
 
         <div class="alert alert-danger" th:if="${error}" th:text="${error}"></div>
@@ -38,4 +41,5 @@
         </form>
     </div>
 </body>
+
 </html>
