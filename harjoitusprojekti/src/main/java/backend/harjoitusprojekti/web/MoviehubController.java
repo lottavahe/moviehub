@@ -31,11 +31,8 @@ public class MoviehubController {
     public String login() {	
         return "login";
     }
-    //rekisteröinti sivu
-    @RequestMapping(value="/register")
-    public String register() {	
-        return "register";
-    }
+    //rekisteröinti sivu user controllerissa
+
 //näytttäää movie hubin aloitussivun loginin jälkee
     @RequestMapping("/moviehub")
     public String showMoviehub() {

@@ -6,7 +6,8 @@
     <title>MovieHub</title>
 </head>
 <body>
-    <h1>Welcome to MovieHub</h1>
+    <h1>MovieHub</h1>
+    <p>Welcome to your home page <span sec:authentication="name">!</span></p>
     <p>Select a page:</p>
 
     <ul>
@@ -15,5 +16,12 @@
         <li><a th:href="@{/watchlist}">Watchlist</a></li>
         <li><a th:href="@{/watched}">Watched</a></li>
     </ul>
+
+    <div>
+        <p>Here you can log out</p>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+        <input type="submit" value="Log out" />
+    </form>
+</div>
 </body>
 </html>

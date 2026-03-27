@@ -1,4 +1,4 @@
-package backend.harjoitusprojekti.web;
+package backend.harjoitusprojekti.service;
 
 
 import org.springframework.security.core.authority.AuthorityUtils;
