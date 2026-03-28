@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>MovieHub</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
     <h1>MovieHub</h1>
     <p>Welcome to your home page <span sec:authentication="name">!</span></p>
     <p>Select a page:</p>

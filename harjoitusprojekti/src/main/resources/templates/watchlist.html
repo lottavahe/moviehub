@@ -5,9 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Watchlater</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
     <h1>Watch list</h1>
     <p>Movies and series you want to watch in the future</p>
 

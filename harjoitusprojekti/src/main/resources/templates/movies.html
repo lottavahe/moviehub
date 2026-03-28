@@ -5,9 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Movies</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
 </head>
 
 <body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
     <h1>Movies</h1>
     <p>All movies in MovieHub</p>
 

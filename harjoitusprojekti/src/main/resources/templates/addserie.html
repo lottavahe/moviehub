@@ -1,10 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
     <title>Moviehub Add</title>
     <meta charset="UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
 </head>
+
 <body>
     <h1>Add serie form</h1>
 
@@ -46,14 +52,13 @@
         <label for="genre">Genre</label>
         <select id="genre" name="genre" required>
             <option value="">Choose genre</option>
-            <option th:each="genre : ${genres}"
-                    th:value="${genre.genreId}"
-                    th:text="${genre.genreName}">
+            <option th:each="genre : ${genres}" th:value="${genre.genreId}" th:text="${genre.genreName}">
             </option>
         </select>
         <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></div>
-        
+
         <input type="submit" value="Save" />
     </form>
 </body>
+
 </html>
