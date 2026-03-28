@@ -53,7 +53,7 @@ public class ActionController {
             movieRepository.save(movie);
         }
 
-        return "redirect:/watched";
+        return "redirect:/movies";
     }
     // merkitse sarja katsotuksi
     @RequestMapping(value = "/markseriewatched/{id}")
@@ -66,9 +66,9 @@ public class ActionController {
             serieRepository.save(serie);
         }
 
-        return "redirect:/watched";
+        return "redirect:/series";
     }
-    //palauta elokuva watchlistiin
+    //palauta elokuva elokuviin
     @RequestMapping(value = "/returnmovietomovies/{id}")
     public String returnMovieToMovies(@PathVariable Long id) {
         Movie movie = movieRepository.findById(id).orElse(null);
@@ -81,7 +81,7 @@ public class ActionController {
 
         return "redirect:/movies";
     }
-    //palauta sarja watchlistiin
+    //palauta sarja sarjoihin
     @RequestMapping(value = "/returnserietoseries/{id}")
     public String returnSerieToSeries(@PathVariable Long id) {
         Serie serie = serieRepository.findById(id).orElse(null);

@@ -1,5 +1,6 @@
 package backend.harjoitusprojekti.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -69,27 +70,29 @@ public class MoviehubController {
 
 
     }
-    //poistaa elokuvan (myöh lisää oikeus vain adminille)
+    //poistaa elokuvan (oikeus vain adminille)
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/deletemovie/{id}", method = RequestMethod.GET)
     public String deleteMovie(@PathVariable Long id) {
         movieRepository.deleteById(id);
         return "redirect:/movies";
     }
 
-    //lisää elokuvan (myöh lisää oikeus admin)
+    //lisää elokuvan (oikeus admin)
     @RequestMapping(value = "/addmovie")
     public String addMovie(Model model) {
         model.addAttribute("movie", new Movie());
         model.addAttribute("genres", genreRepository.findAll());
         return "addmovie";
     }
-    //poistaa sarjan (myöh lisää oikeus vain adminille)
+    //poistaa sarjan (oikeus vain adminille)
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/deleteserie/{id}", method = RequestMethod.GET)
     public String deleteSerie(@PathVariable Long id) {
         serieRepository.deleteById(id);
         return "redirect:/series";
     }
-    //lisää sarjjan (myöh lisää oikeus admin)
+    //lisää sarjjan (oikeus admin)
     @RequestMapping(value = "/addserie")
     public String addSerie(Model model) {
         model.addAttribute("serie", new Serie());

@@ -22,10 +22,10 @@
         <input type="text" name="keyword" th:value="${keyword}" placeholder="Search by title, director or genre">
         <button type="submit">Search</button>
     </form>
-    <div>
+    <div sec:authorize="hasAuthority('ADMIN')">
         <a th:href="@{/addmovie}">+ Add movie</a>
     </div>
-
+   
     <table>
         <tr>
             <th>Title</th>
@@ -35,7 +35,7 @@
             <th>Genre</th>
             <th>Add to watchlist</th>
             <th>Add to watched</th>
-            <th>Delete</th>
+            <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
         </tr>
 
         <tr th:each="movie : ${movies}">
@@ -50,7 +50,7 @@
             <td>
                 <a th:href="@{/markmoviewatched/{id}(id=${movie.id})}">Mark as watched</a>
             </td>
-            <td>
+            <td sec:authorize="hasAuthority('ADMIN')">
                 <a th:href="@{/deletemovie/{id}(id=${movie.id})}"
                     onclick="return confirm('Delete this movie?')">Delete</a>
             </td>
