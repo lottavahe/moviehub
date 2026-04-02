@@ -10,25 +10,43 @@
 </head>
 <!--käytin chatgpt tä auttamaan minua tekemään navbar fragmentin jota käytän jokaisen 
 html sivun bodyn aloituksessa, se näyttää navbarin jossa käyttäjä voi liikkua sivujen välillä-->
+
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h1>MovieHub</h1>
-    <p>Welcome to your home page <span sec:authentication="name">!</span></p>
-    <p>Select a page:</p>
 
-    <ul>
-        <li><a th:href="@{/movies}">Movies</a></li>
-        <li><a th:href="@{/series}">Series</a></li>
-        <li><a th:href="@{/watchlist}">Watchlist</a></li>
-        <li><a th:href="@{/watched}">Watched</a></li>
-    </ul>
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="page-title">
+                Welcome back, <span sec:authentication="name"></span>!
+            </h1>
+            <p class="page-subtitle">
+                Keep track of your movies and series all in one place.
+            </p>
+        </div>
 
-    <div>
-        <p>Here you can log out</p>
-        <form th:action="@{/logout}" method="post" style="display:inline;">
-            <input type="submit" value="Log out" />
-        </form>
+        <div class="card shadow-sm border-0 mx-auto" style="max-width: 750px;">
+            <div class="card-body p-4 text-center">
+                <h2 class="mb-3">About MovieHub</h2>
+                <p class="mb-2">
+                    MovieHub helps you organize your favorite movies and series easily.
+                </p>
+                <p class="mb-2">
+                    You can browse your collection, save titles to your watchlist, and mark them as watched.
+                </p>
+                <p class="mb-0">
+                    Everything is in one place, ready whenever you want to plan your next movie night.
+                </p>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="text-muted">Want to leave for now?</p>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Log out</button>
+            </form>
+        </div>
     </div>
 </body>
+
 
 </html>

@@ -12,67 +12,109 @@
 
 <body>
     <div th:replace="~{fragments/navbar :: navbar}"></div>
-    <h1>Watched</h1>
-    <p>Movies and series you have already watched</p>
 
-    <ul>
-        <li><a th:href="@{/moviehub}">Home</a></li>
-        <li><a th:href="@{/movies}">Movies</a></li>
-        <li><a th:href="@{/series}">Series</a></li>
-        <li><a th:href="@{/watchlist}">Watchlist</a></li>
-        <li><a th:href="@{/watched}">Watched</a></li>
-    </ul>
+    <div class="container py-4">
+        <div class="mb-5">
+            <h1 class="page-title">Watched</h1>
+            <p class="page-subtitle mb-0">Movies and series you have already watched</p>
+        </div>
 
-    <h2>Movies</h2>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Director</th>
-            <th>Release Year</th>
-            <th>Duration</th>
-            <th>Genre</th>
-            <th>Return movie back to movies</th>
+        <div class="mb-5">
+            <h2 class="mb-4">Movies</h2>
 
-        </tr>
+            <div class="row g-4">
+                <div class="col-sm-6 col-md-4 col-lg-3" th:each="movie : ${watchedMovies}">
+                    <div class="card movie-card h-100">
+                        <div class="movie-poster-placeholder">
+                            <span th:text="${movie.title}">Movie title</span>
+                        </div>
 
-        <tr th:each="movie : ${watchedMovies}">
-            <td th:text="${movie.title}"></td>
-            <td th:text="${movie.director}"></td>
-            <td th:text="${movie.releaseYear}"></td>
-            <td th:text="${movie.duration}"></td>
-            <td th:text="${movie.genre.genreName}"></td>
-            <td>
-                <a th:href="@{/returnmovietomovies/{id}(id=${movie.id})}">Delete movie from watched</a>
-            </td>
-        </tr>
-    </table>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" th:text="${movie.title}">Title</h5>
+                            <p class="card-text mb-1">
+                                <strong>Director:</strong>
+                                <span th:text="${movie.director}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Year:</strong>
+                                <span th:text="${movie.releaseYear}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Duration:</strong>
+                                <span th:text="${movie.duration}"></span>
+                            </p>
+                            <p class="card-text mb-3">
+                                <strong>Genre:</strong>
+                                <span th:text="${movie.genre.genreName}"></span>
+                            </p>
 
-    <h2>Series</h2>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Creator</th>
-            <th>Release Year</th>
-            <th>Seasons</th>
-            <th>Episodes</th>
-            <th>Episode Duration</th>
-            <th>Genre</th>
-            <th>Return serie back to series</th>
-        </tr>
+                            <div class="mt-auto d-grid">
+                                <a class="btn btn-outline-dark" th:href="@{/returnmovietomovies/{id}(id=${movie.id})}">
+                                    Remove from watched
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <tr th:each="serie : ${watchedSeries}">
-            <td th:text="${serie.title}"></td>
-            <td th:text="${serie.creator}"></td>
-            <td th:text="${serie.releaseYear}"></td>
-            <td th:text="${serie.seasons}"></td>
-            <td th:text="${serie.episodes}"></td>
-            <td th:text="${serie.duration}"></td>
-            <td th:text="${serie.genre.genreName}"></td>
-            <td>
-                <a th:href="@{/returnserietoseries/{id}(id=${serie.id})}">Delete serie from watched</a>
-            </td>
-        </tr>
-    </table>
+                <div th:if="${#lists.isEmpty(watchedMovies)}" class="col-12">
+                    <p class="text-muted">No watched movies yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="mb-4">Series</h2>
+
+            <div class="row g-4">
+                <div class="col-sm-6 col-md-4 col-lg-3" th:each="serie : ${watchedSeries}">
+                    <div class="card movie-card h-100">
+                        <div class="movie-poster-placeholder">
+                            <span th:text="${serie.title}">Series title</span>
+                        </div>
+
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title" th:text="${serie.title}">Title</h5>
+                            <p class="card-text mb-1">
+                                <strong>Creator:</strong>
+                                <span th:text="${serie.creator}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Year:</strong>
+                                <span th:text="${serie.releaseYear}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Seasons:</strong>
+                                <span th:text="${serie.seasons}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Episodes:</strong>
+                                <span th:text="${serie.episodes}"></span>
+                            </p>
+                            <p class="card-text mb-1">
+                                <strong>Episode duration:</strong>
+                                <span th:text="${serie.duration}"></span>
+                            </p>
+                            <p class="card-text mb-3">
+                                <strong>Genre:</strong>
+                                <span th:text="${serie.genre.genreName}"></span>
+                            </p>
+
+                            <div class="mt-auto d-grid">
+                                <a class="btn btn-outline-dark" th:href="@{/returnserietoseries/{id}(id=${serie.id})}">
+                                    Remove from watched
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div th:if="${#lists.isEmpty(watchedSeries)}" class="col-12">
+                    <p class="text-muted">No watched series yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
