@@ -10,14 +10,13 @@ import backend.harjoitusprojekti.service.UserService;
 import org.springframework.ui.Model;
 import jakarta.validation.Valid;
 
-
 @Controller
 public class RegisterController {
-    //tämä ottaaa registerformin datan vastaan
-    //syöttää sen userserviseen joka tarkistaa onks 
+    // tämä ottaaa registerformin datan vastaan
+    // syöttää sen userserviseen joka tarkistaa onks
     // käyttäjää/email olemassa ja tallentaa sen
-    //vasta appuser repository hakee sen uuden käyttäjän ja tallentaa 
-    //appuser tetokantaam
+    // vasta appuser repository hakee sen uuden käyttäjän ja tallentaa
+    // appuser tetokantaam
 
     private final UserService userService;
 
@@ -39,6 +38,7 @@ public class RegisterController {
 
         if (!registerForm.getPassword().equals(registerForm.getConfirmPassword())) {
             bindingResult.rejectValue("confirmPassword", "error.confirmPassword", "Passwords do not match");
+            model.addAttribute("error", "Passwords do not match");
         }
 
         if (bindingResult.hasErrors()) {
@@ -48,11 +48,11 @@ public class RegisterController {
         try {
             userService.saveNewUser(registerForm);
         } catch (IllegalArgumentException e) {
-            model.addAttribute("message", e.getMessage());
+            model.addAttribute("error", e.getMessage());
             return "register";
         }
 
         return "redirect:/login?registered";
     }
-}
 
+}
