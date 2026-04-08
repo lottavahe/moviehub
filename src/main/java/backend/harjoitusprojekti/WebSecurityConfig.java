@@ -25,6 +25,15 @@ public class WebSecurityConfig {
 				.requestMatchers("/css/**").permitAll()//css näkyy
 				.requestMatchers("/api/**").permitAll()//apilla päääsee
 				.requestMatchers("/h2-console/**").permitAll() // for h2console
+
+				.requestMatchers("/storeuser").permitAll()
+				.requestMatchers("/signup").permitAll()
+				.requestMatchers("/saveuser").permitAll()
+				.requestMatchers("/forgotpassword").permitAll()
+				.requestMatchers("/resetpassword/**").permitAll()
+				.requestMatchers("/resetpassword").permitAll()
+				.requestMatchers("/verifyemail/**").permitAll()
+				.requestMatchers("/verifyemail").permitAll()
 				.anyRequest().authenticated())
 				.headers(headers -> 
 					headers.frameOptions(frameOptions -> frameOptions 

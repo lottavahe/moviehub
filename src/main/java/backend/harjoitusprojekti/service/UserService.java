@@ -30,6 +30,8 @@ public class UserService {
         user.setEmail(registerForm.getEmail());
         user.setPasswordHash(passwordEncoder.encode(registerForm.getPassword()));
         user.setRole("USER");
+        user.setEnabled(true);
+    
 
         userRepository.save(user);
     }

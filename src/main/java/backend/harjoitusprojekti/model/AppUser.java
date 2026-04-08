@@ -26,7 +26,15 @@ public class AppUser {
     @Email
     @Column(name = "email", nullable = false, unique = true)
     private String email;
-        
+
+    @Column(name = "enabled")
+    private boolean enabled;
+	
+	@Column(name = "reset_token")
+    private String resetToken;
+	
+	@Column(name = "verification_token")
+    private String verificationToken;
     public AppUser() {
     }
     
@@ -36,6 +44,7 @@ public class AppUser {
         this.passwordHash = passwordHash;
         this.role = role;
         this.email = email;
+        enabled = false;
     }
 
     public Long getId() {
@@ -76,6 +85,30 @@ public class AppUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public String getVerificationToken() {
+        return verificationToken;
+    }
+
+    public void setVerificationToken(String verificationToken) {
+        this.verificationToken = verificationToken;
     }
 
     @Override
