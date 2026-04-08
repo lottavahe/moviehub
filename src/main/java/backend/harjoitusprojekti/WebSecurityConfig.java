@@ -32,8 +32,6 @@ public class WebSecurityConfig {
 				.requestMatchers("/forgotpassword").permitAll()
 				.requestMatchers("/resetpassword/**").permitAll()
 				.requestMatchers("/resetpassword").permitAll()
-				.requestMatchers("/verifyemail/**").permitAll()
-				.requestMatchers("/verifyemail").permitAll()
 				.anyRequest().authenticated())
 				.headers(headers -> 
 					headers.frameOptions(frameOptions -> frameOptions 
