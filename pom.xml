@@ -48,6 +48,12 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<!--postgreSQL-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<!--password reset-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

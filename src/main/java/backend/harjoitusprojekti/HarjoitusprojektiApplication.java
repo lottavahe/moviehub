@@ -63,7 +63,8 @@ public class HarjoitusprojektiApplication {
 			mrepository.save(new Movie("Barbie", "Greta Gerwig", 2023, 114, comedy));
 			mrepository.save(new Movie("Oppenheimer", "Christopher Nolan", 2023, 180, drama));
 			mrepository.save(new Movie("Frozen", "Chris Buck", 2013, 102, animation));
-			mrepository.save(new Movie("Pirates of the Caribbean: The Curse of the Black Pearl", "Gore Verbinski", 2003, 143, adventure));
+			mrepository.save(new Movie("Pirates of the Caribbean: The Curse of the Black Pearl", "Gore Verbinski", 2003,
+					143, adventure));
 			mrepository.save(new Movie("Inception", "Christopher Nolan", 2010, 148, scifi));
 			mrepository.save(new Movie("The Dark Knight", "Christopher Nolan", 2008, 152, action));
 			mrepository.save(new Movie("Interstellar", "Christopher Nolan", 2014, 169, scifi));
@@ -90,10 +91,17 @@ public class HarjoitusprojektiApplication {
 			srepository.save(new Serie("Black Mirror", "Charlie Brooker", 2011, 6, 27, 60, scifi));
 
 			// Create users: admin/admin user/user
-			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER", "user@gmail.com");
-			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN", "admin@gmail.com");
-			urepository.save(user1);
-			urepository.save(user2);
+			if (urepository.findByUsername("user") == null) {
+				AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6",
+						"USER", "user@gmail.com");
+				urepository.save(user1);
+			}
+
+			if (urepository.findByUsername("admin") == null) {
+				AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C",
+						"ADMIN", "admin@gmail.com");
+				urepository.save(user2);
+			}
 
 		};
 	}

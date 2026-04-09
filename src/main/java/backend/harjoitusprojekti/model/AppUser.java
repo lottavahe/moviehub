@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email;
 
 
 @Entity
-@Table(name="UserTable")
+@Table(name="usertable")
 public class AppUser {
 
     @Id

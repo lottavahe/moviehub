@@ -21,10 +21,10 @@ public class WebSecurityConfig {
 
 		http.authorizeHttpRequests(
 				authorize -> authorize
-				.requestMatchers("/register", "/saveuser").permitAll()//pitää päästä rekisteröitymään
+				.requestMatchers("/register").permitAll()//pitää päästä rekisteröitymään
 				.requestMatchers("/css/**").permitAll()//css näkyy
 				.requestMatchers("/api/**").hasAuthority("ADMIN")//apilla päääsee
-				.requestMatchers("/h2-console/**").permitAll() // for h2console
+				//.requestMatchers("/h2-console/**").permitAll() // for h2console
 				.requestMatchers("/forgotpassword").permitAll()
 				.requestMatchers("/resetpassword/**").permitAll()
 				.requestMatchers("/resetpassword").permitAll()
