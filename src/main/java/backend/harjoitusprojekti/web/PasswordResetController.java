@@ -132,7 +132,8 @@ public class PasswordResetController {
         return "redirect:/login";
     }
 
-    // Send password reset email
+    // Send password reset email 
+    //sähköposti tulee omasta osoitteestani tässä harjoituksessa, sillä käytän sitä esimerkki sähköpostina 
     @Value("${spring.mail.username}")
     private String fromEmail;
 

@@ -1,16 +1,14 @@
 package backend.harjoitusprojekti.model;
-
-
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class ResetPasswordForm {
     @NotEmpty
-    @Size(min=7, max=30)
+    @Size(min=6, max=30)
     private String password = "";
     
     @NotEmpty
-    @Size(min=7, max=30)
+    @Size(min=6, max=30)
     private String passwordCheck = "";
 
 	public String getPassword() {

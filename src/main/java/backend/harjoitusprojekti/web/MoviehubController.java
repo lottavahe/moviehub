@@ -79,6 +79,7 @@ public class MoviehubController {
     }
 
     //lisää elokuvan (oikeus admin)
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/addmovie")
     public String addMovie(Model model) {
         model.addAttribute("movie", new Movie());
@@ -93,6 +94,7 @@ public class MoviehubController {
         return "redirect:/series";
     }
     //lisää sarjjan (oikeus admin)
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/addserie")
     public String addSerie(Model model) {
         model.addAttribute("serie", new Serie());
@@ -101,6 +103,7 @@ public class MoviehubController {
     }
 
     //tallennna elokuva
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/savemovie", method = RequestMethod.POST)
     public String savemovie(@Valid Movie movie, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){
@@ -111,6 +114,7 @@ public class MoviehubController {
         return "redirect:/movies";
     }
     //tallenna sarja 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/saveserie", method = RequestMethod.POST)
     public String saveserie(@Valid Serie serie, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()){

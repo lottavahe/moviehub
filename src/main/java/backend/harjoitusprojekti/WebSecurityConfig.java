@@ -23,12 +23,8 @@ public class WebSecurityConfig {
 				authorize -> authorize
 				.requestMatchers("/register", "/saveuser").permitAll()//pitää päästä rekisteröitymään
 				.requestMatchers("/css/**").permitAll()//css näkyy
-				.requestMatchers("/api/**").permitAll()//apilla päääsee
+				.requestMatchers("/api/**").hasAuthority("ADMIN")//apilla päääsee
 				.requestMatchers("/h2-console/**").permitAll() // for h2console
-
-				.requestMatchers("/storeuser").permitAll()
-				.requestMatchers("/signup").permitAll()
-				.requestMatchers("/saveuser").permitAll()
 				.requestMatchers("/forgotpassword").permitAll()
 				.requestMatchers("/resetpassword/**").permitAll()
 				.requestMatchers("/resetpassword").permitAll()
