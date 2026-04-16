@@ -4,6 +4,8 @@ MovieHub on backend-kurssilla toteutettu harjoitusprojekti, jonka tarkoituksena 
 
 Sovelluksessa on myös käyttäjien rekisteröityminen, kirjautuminen ja salasanan palautus sähköpostin kautta. Lisäksi projektissa on toteutettu REST API sekä admin-käyttäjälle omat oikeudet elokuvien ja sarjojen lisäämiseen ja poistamiseen.
 
+Moviehub löytyy osoitteesta --> https://softala.haaga-helia.fi:8095/login
+
 ## Projektin tavoite
 
 Projektin tavoitteena oli harjoitella backend-kehityksen keskeisiä asioita käytännössä. Työssä hyödynnettiin Spring Bootia, Spring Data JPA:ta, Spring Securityä, Thymeleafia sekä PostgreSQL-tietokantaa. Tarkoituksena oli yhdistää samaan projektiin tietokanta, käyttöliittymä, tietoturva, validointi ja rajapintojen toteutus.
