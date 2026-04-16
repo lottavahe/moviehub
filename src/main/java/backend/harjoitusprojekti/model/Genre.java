@@ -3,20 +3,21 @@ package backend.harjoitusprojekti.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
 @Entity
 public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long genreId;
+
+    @Column(nullable = false, unique = true)
     private String genreName;
 
     @JsonIgnoreProperties("genre")
-
     public Genre() {
     }
 
@@ -44,7 +45,4 @@ public class Genre {
     public String toString() {
         return "";
     }
-
-    
-    
 }

@@ -17,5 +17,6 @@ public interface MovieRepository extends CrudRepository<Movie, Long> {
     List<Movie> findByInWatchlistTrueAndWatchedFalse();
     List<Movie> findByWatchedTrue();
     List<Movie> findByInWatchlistFalseAndWatchedFalse();
+    boolean existsByTitleAndDirector(String title, String director);
 
 }

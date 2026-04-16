@@ -14,6 +14,6 @@ public interface SerieRepository extends CrudRepository<Serie, Long> {
     List<Serie> findByInWatchlistTrueAndWatchedFalse();
     List<Serie> findByWatchedTrue();
     List<Serie> findByInWatchlistFalseAndWatchedFalse();
-
+boolean existsByTitleAndCreator(String title, String creator);
 
 }
