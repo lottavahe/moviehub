@@ -48,7 +48,7 @@ Projektissa käytin seuraavia teknologioita:
 - Bootstrap
 - PostgreSQL (Tietokanta Neon DB sivulla)
 - JavaMailSender
-- Projektin HTML-sivujen ulkoasu generoitu tekoälyllä (ChatGPT)
+- Projektin HTML-sivujen ulkoasu ja tämä README.md tiedosto generoitu tekoälyllä (ChatGPT)
 
 ## Tietoturva ja käyttäjähallinta
 
